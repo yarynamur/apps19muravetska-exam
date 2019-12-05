@@ -1,0 +1,21 @@
+package app;
+
+import json.Json;
+import org.junit.Test;
+import org.skyscreamer.jsonassert.JSONAssert;
+
+public class JSONAppTest {
+    @Test
+    public void testSessionResult() throws Exception {
+        Json jsonObject = JSONApp.sessionResult();
+
+        String expectedJSON =
+                "{'name': 'Andrii', 'surname': 'Rodionov', 'year': 2, 'exams': [" +
+                        "{'course': 'OOP', 'mark': 3, 'passed': true}," +
+                        "{'course': 'English', 'mark': 5, 'passed': true}," +
+                        "{'course': 'Math', 'mark': 2, 'passed': false}" +
+                        "]}";
+
+        JSONAssert.assertEquals(expectedJSON, jsonObject.toJson(), true);
+    }
+}
